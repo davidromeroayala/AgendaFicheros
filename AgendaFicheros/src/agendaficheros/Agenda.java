@@ -6,7 +6,10 @@
 package agendaficheros;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
+import static java.util.Spliterators.iterator;
+import static java.util.Spliterators.iterator;
 
 /**
  *
@@ -20,8 +23,7 @@ public class Agenda {
 
     public Agenda(String nombre) {
         this.propietario = nombre;
-       // vAgenda = new Contacto[10];
-        vAgenda = new ArrayList();
+        vAgenda = iodatos.Fichero.cargarDatos();
     }
     
     public void añadirContacto(Contacto contacto){
@@ -59,7 +61,7 @@ public class Agenda {
     }
     
     public void editarContacto (String dato){
-        for (int i = 0; i < vAgenda.size(); i++) {
+       /* for (int i = 0; i < vAgenda.size(); i++) {
             if (vAgenda.get(i).getNombre().equalsIgnoreCase(dato) || 
                 vAgenda.get(i).getTelefono().equalsIgnoreCase(dato)){
                 Scanner leer = new Scanner(System.in); 
@@ -67,7 +69,21 @@ public class Agenda {
                 vAgenda.get(i).setNombre(leer.nextLine());
                 vAgenda.get(i).setTelefono(leer.nextLine());
             }
-        }
+        }*/
+       Iterator<Contacto>it=vAgenda.iterator();
+       while(it.hasNext()){
+           Contacto c=it.next();
+            if (c.getNombre().equalsIgnoreCase(dato) || 
+                c.getTelefono().equalsIgnoreCase(dato)){
+                Scanner leer = new Scanner(System.in); 
+                System.out.println("Dime el nuevo nombre y telefono");
+                c.setNombre(leer.nextLine());
+                c.setNombre(leer.nextLine());
+                c.setTelefono(leer.nextLine());
+            }
+       }
+           
+            
     }
     
 }
